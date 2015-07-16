@@ -72,3 +72,7 @@ If you need to change the domain of the site put the follow in wp-config.php of 
 define('WP_HOME','http://etopian.com');
 define('WP_SITEURL','http://etopian.com');
 ```
+
+### File ownership
+The site on your host needs proper file permissions. You to your site's folder and type the following:
+chown -R 100:101 htdocs/
