@@ -6,3 +6,6 @@ This is a work in progress. Current aim is to only support Ubuntu 14.04 LTS.
 This deploys the site on the host system under /data/sites/domain.tld
 
 It will then install the site for you as well.
+
+https://github.com/etopian/php-wordpress
+https://github.com/etopian/nginx-proxy
