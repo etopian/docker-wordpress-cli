@@ -40,3 +40,15 @@ CREATE DATABASE etopian_com;
 CREATE USER 'etopian_com'@'%' IDENTIFIED BY 'mydbpass';
 GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
  ```
+
+###wp-config.php - SSL
+
+
+```
+define('WP_HOME','https://etopian.com');
+define('WP_SITEURL','https://etopian.com');
+  define('FORCE_SSL_ADMIN', true);
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+       $_SERVER['HTTPS']='on';
+```
+
