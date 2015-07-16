@@ -1,7 +1,7 @@
 # docker-wordpress-cli
 A Python based CLI to help you deploy WordPress on Docker using nginx-proxy and Alpine Linux.
 
-** This is a work in progress, not for use. Current aim is to only support Ubuntu 14.04 LTS. **
+**This is a work in progress, not for use. Current aim is to only support Ubuntu 14.04 LTS.**
 
 This deploys the site on the host system under /data/sites/domain.tld, this is then published to the container using the -v switch. This makes sure your data for your site is available in one place outside of your container in case you decide to delete the container when upgrading, etc. A Docker volume seems like a big black box to stuff your data inside which can easily be deleted.
 
