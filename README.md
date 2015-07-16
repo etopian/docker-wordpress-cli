@@ -19,6 +19,7 @@ We use the following images:
 Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.
 
 
+##Docker WP CLI Commands
 * install-system - Install all necessary dependencies on the host system, currently only Ubuntu 14.04 is supported.
 * install-wp - Install WP on this box using a certain domain.
 * pull - Pull all the necessary images to deploy WP on your box.
