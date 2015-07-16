@@ -34,45 +34,4 @@ Mail is not routed by the container, you must use an SMTP plugin or Mailgun or A
 
 This project install WP-Cli on the host system to perform certain tasks. HOwever, you must not use WP-CLI to interact with the files on the host system. Doing so is very dangerous as if your site becomes compromised and you run WP-Cli on it on the host system you can compromise the host system, or other sites that have the same user. So don't do it! If you need to work on the site, you must run a separate container that uses volumes to mount the site root inside of it. This way running WP-CLI is safe.
 
-###NGinx Proxy
-This sits in front of all of your sites at port 80 serving all your sites.
-```
-docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
-```
-
-###PHP-FPM + Nginx
-Each site runs in its own container with PHP-FPM and Nginx instance.
-```
-docker run -d --name etopian_com -e VIRTUAL_HOST=etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
-```
-
-##MySQL Database
-```
-docker run -d --name mariadb -p 172.17.42.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
-
-CREATE DATABASE etopian_com;
-CREATE USER 'etopian_com'@'%' IDENTIFIED BY 'mydbpass';
-GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
- ```
-
-###wp-config.php - SSL
-
-
-```
-define('WP_HOME','https://etopian.com');
-define('WP_SITEURL','https://etopian.com');
-  define('FORCE_SSL_ADMIN', true);
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-       $_SERVER['HTTPS']='on';
-```
-
-###wp-config.php
-If you need to change the domain of the site put the follow in wp-config.php of your site.
-```
-define('WP_HOME','http://etopian.com');
-define('WP_SITEURL','http://etopian.com');
-```
-
-### File ownership
-The site on your host needs proper file permissions. You to your site's folder and type the following:
-chown -R 100:101 htdocs/
+In the meantime check out http://www.dockerwordpress.com for instructions on how you can do all the stuff that this is suppose to do manually.
