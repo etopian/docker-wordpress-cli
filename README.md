@@ -13,18 +13,12 @@ We use the following images:
 
 * https://github.com/etopian/php-wordpress
 * https://github.com/etopian/nginx-proxy
+
 Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.
 
 
-  install-system
-    Install all necessary dependencies on the host system, currently only Ubuntu 14.04 is supported.
-
-  install-wp
-    Install WP on this box using a certain domain.
-
-  pull
-    Pull all the necessary images to deploy WP on your box.
-
-  run
-    Run all images.
+* install-system - Install all necessary dependencies on the host system, currently only Ubuntu 14.04 is supported.
+* install-wp - Install WP on this box using a certain domain.
+* pull - Pull all the necessary images to deploy WP on your box.
+* run - Run all images.
 
