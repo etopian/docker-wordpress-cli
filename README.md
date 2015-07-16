@@ -22,3 +22,6 @@ Mail is not routed by the container, you must use an SMTP plugin or Mailgun or A
 * pull - Pull all the necessary images to deploy WP on your box.
 * run - Run all images.
 
+##WP-CLI and the Host System
+
+This project install WP-Cli on the host system to perform certain tasks. HOwever, you must not use WP-CLI to interact with the files on the host system. Doing so is very dangerous as if your site becomes compromised and you run WP-Cli on it on the host system you can compromise the host system, or other sites that have the same user. So don't do it! If you need to work on the site, you must run a separate container that uses volumes to mount the site root inside of it. This way running WP-CLI is safe.
