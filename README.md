@@ -57,3 +57,9 @@ if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
        $_SERVER['HTTPS']='on';
 ```
 
+###wp-config.php
+If you need to change the domain of the site put the follow in wp-config.php of your site.
+```
+define('WP_HOME','http://etopian.com');
+define('WP_SITEURL','http://etopian.com');
+```
