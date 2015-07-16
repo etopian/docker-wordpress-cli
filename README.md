@@ -19,6 +19,10 @@ We use the following images:
 Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.
 * https://wordpress.org/plugins/wp-ses/
 * https://wordpress.org/plugins/mailgun/
+* https://wordpress.org/plugins/wp-smtp/
+* https://wordpress.org/plugins/easy-wp-smtp/
+* https://wordpress.org/plugins/wp-mail-bank/
+
 
 ##Docker WP CLI Commands
 * install-system - Install all necessary dependencies on the host system, currently only Ubuntu 14.04 is supported.
