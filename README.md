@@ -30,6 +30,11 @@ This project install WP-Cli on the host system to perform certain tasks. HOwever
 
 ##MySQL Database
 ```
+docker run -d --name mariadb -p 172.17.42.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
+
+docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
+
+
 CREATE DATABASE etopian_com;
 CREATE USER 'etopian_com'@'%' IDENTIFIED BY 'mydbpass';
 GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
