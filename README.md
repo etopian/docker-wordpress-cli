@@ -11,7 +11,7 @@ It will then install the site for you as well.
 
 We use the following images:
 
-* https://github.com/etopian/php-wordpress
+* https://github.com/etopian/alpine-php-wordpress
 * https://github.com/etopian/nginx-proxy
 
 Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.
