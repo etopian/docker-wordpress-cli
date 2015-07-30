@@ -17,7 +17,7 @@ We use the following images:
 
 ###Is it possible to run Alpine Linux with HHVM?
 
-No it's most likely not as HHVM can't be compiled on Alpine Linux as it uses ulibc which does not support  res_ninit.
+No it's most likely not as HHVM can't be compiled on Alpine Linux as it uses ulibc which does not support  res_ninit. We might support HHVM using a Debian container at some point, currently we are happy sticking to Nginx and PHP-FPM.
 
 
 ##Docker WP CLI Commands
