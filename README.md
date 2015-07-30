@@ -15,7 +15,9 @@ We use the following images:
 * https://github.com/etopian/nginx-proxy
 
 
+###Is it possible to run Alpine Linux with HHVM?
 
+No it's most likely not as HHVM can't be compiled on Alpine Linux as it uses ulibc which does not support  res_ninit.
 
 
 ##Docker WP CLI Commands
