@@ -6,6 +6,9 @@ from cement.core import handler
 import subprocess
 import os
 import platform
+import sqlite3
+conn = sqlite3.connect('example.db')
+
 
 class MyBaseController(CementBaseController):
     class Meta:
@@ -14,9 +17,15 @@ class MyBaseController(CementBaseController):
         arguments = [
             ( ['-f', '--foo'],
               dict(action='store', help='the notorious foo option') ),
+            ( ['-d', '--domain'],
+              dict(action='store', help='The domain name for instance site.com, exclude www.') ),
+            ( ['-s', '--sub_domain'],
+              dict(action='store', help='Specify a subdomain, like www.') ),
             ( ['-C'],
               dict(action='store_true', help='the big C option') ),
             ]
+
+
 
     def version(self):
         release = open("/etc/os-release")
@@ -64,21 +73,35 @@ class MyBaseController(CementBaseController):
     #    self.app.log.info("Inside MyBaseController.command2()")
 
 
-class MySecondController(CementBaseController):
+class DockerController(CementBaseController):
     class Meta:
-        label = 'second'
+        label = 'docker'
         stacked_on = 'base'
 
     @expose(help='this is some command', aliases=['some-cmd'])
     def second_cmd1(self):
         self.app.log.info("Inside MySecondController.second_cmd1")
 
+    @expose(help="Create and start a new wordpress process")
+    def create(self):
+        print("Recieved option: foo => %s" % self.app.pargs.domain)
+        domain_name = app.pargs.domain
+        domain_name_underscore = domain_name.replace('.', '_')
+
+        subprocess.call("docker run -d --name "+domain_name+" -e VIRTUAL_HOST=www."+domain_name+",etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress", shell=True)
+
+    def proxy(self):
+        domain_name = app.pargs.domain
+
+        #docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
+
+
 
 class DockerWp(CementApp):
     class Meta:
         label = 'dockerwp'
         base_controller = 'base'
-        handlers = [MyBaseController, MySecondController]
+        handlers = [MyBaseController, DockerController]
 
 with DockerWp() as app:
     app.run()
